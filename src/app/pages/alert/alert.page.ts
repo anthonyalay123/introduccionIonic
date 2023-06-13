@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-alert',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertPage implements OnInit {
 
-  constructor() { }
+  handlerMessage = '';
+  roleMessage = '';
 
-  ngOnInit() {
-  }
+  constructor(private alertCtrl: AlertController) { } 
 
+  ngOnInit() { 
+  } 
+  async presentAlert() { 
+    const alert = await this.alertCtrl.create({ 
+      backdropDismiss: false, 
+      header: 'Alert', 
+      subHeader: 'Important message', 
+      message: 'This is an alert!', 
+      buttons: ['OK'] 
+    }); 
+    await alert.present(); 
+  };
+  async presentAlertMultipeButton() { 
+    const alert = await this.alertCtrl.create({ 
+      backdropDismiss: false, 
+      header: 'Alert', 
+      subHeader: 'Important message', 
+      message: 'This is an alert!', 
+      buttons: ['Cancel', 'Opne Modal', 'Delete'] 
+    }); 
+    await alert.present(); 
+  } 
 }
+
