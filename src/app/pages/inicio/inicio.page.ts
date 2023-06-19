@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
 import { ComponentsModule } from '../../components/components.module';
-import { DataService } from '../../services/data.service';
 
 //crear una interface para definir propiedades que el componente lista va a tener
 interface Componente {
@@ -32,19 +30,9 @@ export class InicioPage implements OnInit {
       redirectTo: '/alert'
     },
   ];
+  constructor() { }
 
-  componentes: Observable<Componente[]>;
-  
-  constructor(private menuCtrl: MenuController,
-    private dataService: DataService) { }
-    
   ngOnInit() {
-    this.componentes = this.dataService.getMenuOpts();
   }
-  mostrarMenu() {
-    this.menuCtrl.open('first');
-  }
-
-
 
 }
