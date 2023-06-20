@@ -15,7 +15,7 @@
     "redirectTo": "/avatar"
     },
     {
-    "icon": "logo-ionic",
+    "icon": "star",
     "name": "Button",
     "redirectTo": "/button"
     }
