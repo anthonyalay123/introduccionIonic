@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular'; 
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-alert',
@@ -7,33 +7,54 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./alert.page.scss'],
 })
 export class AlertPage implements OnInit {
+  constructor(private alertCtrl: AlertController) { }
+  ngOnInit() {
+  }
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+    backdropDismiss: false,
+    header: 'Alert',
+    subHeader: 'Important message',
+    message: 'This is an alert!',
+    buttons: ['OK']
+    });
+      await alert.present();
+    }
 
-  handlerMessage = '';
-  roleMessage = '';
+  async presentAlertMultilpeButton() {
+    const alert = await this.alertCtrl.create({
+    backdropDismiss: false,
+    header: 'Alert',
+    subHeader: 'Important message',
+    message: 'This is an alert!',
+    buttons: ['Cancel', 'Opne Modal', 'Delete']
+    });
+      await alert.present();
+    };
+    
+  async presentAlertMultilpeButtonAction() {
+    const alert = await this.alertCtrl.create({
+    backdropDismiss: false,
+    header: 'Alert',
+    subHeader: 'Important message',
+    message: 'This is an alert!',
+    buttons: [
+    {
+    text: 'OK!',
+    handler: () => {
+    console.log('Click en OK!')
+    }
+    },
+    {
+      text: 'Cancelar',
+      role: 'cancel',
+      cssClass: 'rojo'
+    }
+    ]
+    });
+      await alert.present();
+    }; 
+  }
 
-  constructor(private alertCtrl: AlertController) { } 
 
-  ngOnInit() { 
-  } 
-  async presentAlert() { 
-    const alert = await this.alertCtrl.create({ 
-      backdropDismiss: false, 
-      header: 'Alert', 
-      subHeader: 'Important message', 
-      message: 'This is an alert!', 
-      buttons: ['OK'] 
-    }); 
-    await alert.present(); 
-  };
-  async presentAlertMultipeButton() { 
-    const alert = await this.alertCtrl.create({ 
-      backdropDismiss: false, 
-      header: 'Alert', 
-      subHeader: 'Important message', 
-      message: 'This is an alert!', 
-      buttons: ['Cancel', 'Opne Modal', 'Delete'] 
-    }); 
-    await alert.present(); 
-  } 
-}
-
+  

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { Observable } from 'rxjs';
 import { ComponentsModule } from '../../components/components.module';
+import { DataService } from '../../services/data.service';
 
 //crear una interface para definir propiedades que el componente lista va a tener
 interface Componente {
@@ -13,26 +16,19 @@ interface Componente {
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
+
 export class InicioPage implements OnInit {
+  
+  componentes: Observable<Componente[]> = new Observable<Componente[]>(); // Corrección aquí
 
-  //crear nuevo listado
-
-  //componentes: any[] = [];
-  componentes: Componente[] = [
-    {
-      icon: 'american-football-outline',
-      name: 'Action Sheet',
-      redirectTo: '/action-sheet'
-    },
-    {
-      icon: 'alert-circle-outline',
-      name: 'Alert',
-      redirectTo: '/alert'
-    },
-  ];
-  constructor() { }
+  constructor(
+    private menuCtrl: MenuController,
+    private dataService: DataService) { }
 
   ngOnInit() {
+    this.componentes = this.dataService.getMenuOpts();
   }
-
+  mostrarMenu() {
+    this.menuCtrl.open('first');
+  }
 }

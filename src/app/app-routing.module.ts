@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { AvatarPage } from './pages/avatar/avatar.page';
-import { ButtonPage } from './pages/button/button.page';
-
 const routes: Routes = [
   {
     path: '',
@@ -31,12 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/button/button.module').then( m => m.ButtonPageModule)
   },
   {
-    path: 'avatar',
-    component: AvatarPage
-  },
-  {
-    path: 'button',
-    component: ButtonPage
+    path: 'input',
+    loadChildren: () => import('./pages/input/input.module').then( m => m.InputPageModule)
   },
 ];
 

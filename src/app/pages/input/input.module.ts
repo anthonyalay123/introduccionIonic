@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InputPageRoutingModule } from './input-routing.module';
 
 import { InputPage } from './input.page';
+
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -19,4 +20,4 @@ import { ComponentsModule } from '../../components/components.module';
   ],
   declarations: [InputPage]
 })
-export class InputPageModule { }
+export class InputPageModule {}

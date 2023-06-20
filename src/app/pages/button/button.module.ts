@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ButtonPageRoutingModule } from './button-routing.module';
 
 import { ButtonPage } from './button.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ButtonPageRoutingModule
+    ButtonPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ButtonPage]
 })
